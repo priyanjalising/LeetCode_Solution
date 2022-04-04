@@ -1,0 +1,65 @@
+## https://leetcode.com/problems/search-a-2d-matrix-ii/
+
+## Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+ 
+
+Example 1:
+
+
+Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
+Output: true
+Example 2:
+
+
+Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
+Output: false
+ 
+
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= n, m <= 300
+-109 <= matrix[i][j] <= 109
+All the integers in each row are sorted in ascending order.
+All the integers in each column are sorted in ascending order.
+-109 <= target <= 109
+
+
+
+## Brute force solution
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        rstart = 0
+        rend = len(matrix) - 1
+        cend = len(matrix[0]) - 1
+        
+        #edge case 1: if length of matrix is zero, then target won't be found
+        if rend < 0:
+            return False
+            
+        #edge case 2: if target is smaller than first element of the matrix, then it won't exist
+        elif matrix[0][0] > target:
+            return False
+            
+        else:
+            # start from last element of first row
+            while rstart < len(matrix) and cend >= 0:
+                if matrix[rstart][cend] == target:
+                    return True
+                    
+                # if element is smaller than target then it won't exist in that column
+                elif matrix[rstart][cend] < target:
+                    rstart +=1
+                
+                # if element is larger than target then it won't exist in that row
+                elif matrix[rstart][cend] > target:
+                    cend -=1
+                    
+            return False
+                    
+            
