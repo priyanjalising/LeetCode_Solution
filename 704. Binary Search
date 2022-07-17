@@ -1,6 +1,9 @@
 #Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 #You must write an algorithm with O(log n) runtime complexity.
 
+# https://leetcode.com/problems/binary-search/
+
+# Direct Approach:
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
@@ -19,3 +22,24 @@ class Solution:
                     
             return -1
         
+# Approach 2 (using bisect_left funtion)
+
+# bisect_left is a function in bisect library. It is used to find the location at which an element should be inserted
+# it returns pointer to the index
+
+class Solution:
+    from bisect import bisect_left
+    def search(self, nums: List[int], target: int) -> int:
+        index = bisect_left(nums, target)
+        return -1 if index >= len(nums) or nums[index] != target else index
+        
+        
+# Approach 3 (using dictionary)
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        dic = {}
+        for key, value in enumerate(nums):
+            if target == value:
+                return key
+        return -1
