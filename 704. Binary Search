@@ -3,7 +3,7 @@
 
 # https://leetcode.com/problems/binary-search/
 
-# Direct Approach:
+#  ------------------------------------------------------Direct Approach ------------------------------------------------------
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
@@ -22,7 +22,7 @@ class Solution:
                     
             return -1
         
-# Approach 2 (using bisect_left funtion)
+#  ------------------------------------------------------ Approach 2 (using bisect_left funtion)  ------------------------------------------------------
 
 # bisect_left is a function in bisect library. It is used to find the location at which an element should be inserted
 # it returns pointer to the index
