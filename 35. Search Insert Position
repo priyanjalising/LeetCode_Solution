@@ -3,7 +3,7 @@
 
 # https://leetcode.com/problems/search-insert-position/
 
-# Brute force approach
+#  ------------------------------------------------------ Brute force approach  ------------------------------------------------------
 
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
@@ -16,7 +16,7 @@ class Solution:
                 i+=1
             return i
             
-# Optimized solution
+#  ------------------------------------------------------ Optimized solution  ------------------------------------------------------
 
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
@@ -34,7 +34,7 @@ class Solution:
 
             return mid if nums[mid]>=target else mid+1
 
-# Approach 3
+# ------------------------------------------------------ Approach 3  ------------------------------------------------------
 
 class Solution:
     from bisect import bisect_left
