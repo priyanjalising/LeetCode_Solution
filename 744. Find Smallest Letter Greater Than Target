@@ -1,0 +1,36 @@
+# Given a characters array letters that is sorted in non-decreasing order and a character target, return the smallest character in the array that is larger than target.
+
+Note that the letters wrap around.
+For example, if target == 'z' and letters == ['a', 'b'], the answer is 'a'.
+
+# https://leetcode.com/problems/find-smallest-letter-greater-than-target/
+
+# Approach 1
+
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        left = 0
+        right = len(letters) - 1
+        
+        while left <= right:
+            mid = (left + right) // 2
+            if letters[mid] <= target:
+                if mid + 1 < len(letters) and letters[mid + 1] > target:
+                    return letters[mid + 1]
+                left = mid + 1
+            else:
+                right = mid - 1
+                
+        return letters[0]
+        
+        
+# Approach 2
+
+class Solution:
+    from bisect import bisect_right
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        index = bisect_right(letters, target)
+        if index < len(letters) and letters[index] > target:
+            return letters[index]
+        else:
+            return letters[0]
