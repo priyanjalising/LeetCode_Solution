@@ -31,3 +31,10 @@ class Solution:
                     r=mid-1
 
             return mid if nums[mid]>=target else mid+1
+
+# Approach 3
+
+class Solution:
+    from bisect import bisect_left
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        return bisect_left(nums, target)
