@@ -2,6 +2,10 @@
 #If target is not found in the array, return [-1, -1].
 #You must write an algorithm with O(log n) runtime complexity.
 
+# https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+
+#  ------------------------------------------------------Approach 1 ------------------------------------------------------
+
 
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
@@ -30,3 +34,36 @@ class Solution:
                 
                     
             return [-1,-1]
+
+
+# ------------------------------------------------------ Approach 2  ------------------------------------------------------
+
+class Solution:
+    from bisect import bisect_left, bisect_right
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        
+        if len(nums) == 0:
+            return [-1,-1]
+        
+        first = bisect_left(nums, target)
+        last = bisect_right(nums, target) - 1
+        
+        if (first < len(nums) and nums[first] == target) and (nums[last] == target) and first <= last:
+            return [first, last]
+        else:
+            return [-1, -1]
+                
+      
+# ------------------------------------------------------Cleaned up version of approach 2  ------------------------------------------------------
+
+class Solution:
+    from bisect import bisect_left, bisect_right
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        
+        if len(nums) == 0:
+            return [-1,-1]
+        
+        first = bisect_left(nums, target)
+        last = bisect_right(nums, target)
+        
+        return [first, last - 1] if first < last else [-1,-1]
