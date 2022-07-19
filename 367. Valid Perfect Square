@@ -1,0 +1,29 @@
+# Given a positive integer num, write a function which returns True if num is a perfect square else False.
+
+Follow up: Do not use any built-in library function such as sqrt.
+
+# https://leetcode.com/problems/valid-perfect-square/
+
+
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        
+        if num in range(0,3):
+            return True
+        
+        start = 0 
+        end = num/2
+        
+        while start <= end:
+            mid = (start + end)//2
+            if mid*mid == num:
+                return True
+            elif mid * mid < num:
+                    start = mid + 1
+            else:
+                end = mid - 1
+        return False
+        
+        
+Time complexity --------------------------------------------------------------------------------------
+Since this is a staright forward binary search, time complexity will be O(log N)
