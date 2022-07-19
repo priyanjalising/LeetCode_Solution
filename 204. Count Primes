@@ -20,3 +20,14 @@
         
             
         return sum(primes)
+
+
+# Time Complexity ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The loop starts from 2 and marks every multiple of 2. Therefore for input size of n, this loop would run for n/2 indexes. Similarly for i = 3, the loop would run 
+for n/3 indexes and so on for every prime number encountered
+
+Therefore the total # of runs : n/2 + n/3 + n/5 + n/7 + ... 
+This is a harmonic series and we find the sum for this which log(log n)
+
+So total time complexity = O(n*log(log n))
